@@ -1,10 +1,12 @@
 # blog
 个人博客
+
 # 技术栈：
 Spring Boot / Spring MVC / Spring Data Jpa
 Java8
 Logback
 Lombok
+
 # 功能列表：
 认证方式： Basic、 Cookie、Header、内外网
 统一错误处理、统一Json格式模板
@@ -17,17 +19,22 @@ Lombok
 自动生成接口文档
 环境配置
 区分有三种环境dev、test、prod，不同环境会加载不同的配置文件
+
 # Spring环境变量:
 application.yaml或application.properties里配置spring.profiles.active
-应用内获取环境变量: 
+
+# 应用内获取环境变量: 
 #spring注入: @Autowired Environment env 或手动解析spring配置文件（不依赖Spring）
+
 # 数据源配置
 手动安装: redis: ip:127.0.0.1 port:6379 password:无
-可执行jar包
+
+# 可执行jar包
 java -jar deploy/build/libs/deploy-${version}.jar
 ./deploy/build/libs/deploy-${version}.jar 如需配置JVM等参数请修复deploy/config/deploy-${version}.conf并拷贝到可执行jar包相同目录，并修改${version}
 运行项目方式
 执行运行: Application.java
+
 # 监控
 健康检查： http://localhost:7002/health
 
