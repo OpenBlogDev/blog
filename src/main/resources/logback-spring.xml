@@ -3,7 +3,7 @@
 	<!-- 设置上下文名称 -->
 	<contextName>blog-logging</contextName>
 	<!--路径 -->
-	<property name="logback.logs.path" value="./logs" />
+	<property name="logback.logs.path" value="./src/main/webapp/logs" />
 	<!--appender 模块 -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender" target="System.out">
 		<layout charset="UTF-8">
@@ -41,7 +41,7 @@
 		<!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 		 <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-			<FileNamePattern>${logback.logs.path}/info.%d{yyyyMMdd-HH}.gz</FileNamePattern>
+			<FileNamePattern>${logback.logs.path}/info.%d{yyyyMMdd-HH}.log</FileNamePattern>
 			<!--只保留最近90天的日志 -->
 			<maxHistory>90</maxHistory>
 			<!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志 -->
@@ -61,7 +61,7 @@
 		那么当天日志是<File>，明天会自动把今天的日志改名为今天的日期。即，<File> 的日志都是当天的。 -->
 		<file>${logback.logs.path}/debug.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${logback.logs.path}/debug.%d{yyyyMMdd-HH}.gz</FileNamePattern>
+			<FileNamePattern>${logback.logs.path}/debug.%d{yyyyMMdd-HH}.log</FileNamePattern>
 			<!--只保留最近90天的日志 -->
 			<maxHistory>90</maxHistory>
 			<!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志 -->
@@ -81,7 +81,7 @@
 		那么当天日志是<File>，明天会自动把今天的日志改名为今天的日期。即，<File> 的日志都是当天的。 -->
 		<file>${logback.logs.path}/warn.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${logback.logs.path}/warn.%d{yyyyMMdd-HH}.gz</FileNamePattern>
+			<FileNamePattern>${logback.logs.path}/warn.%d{yyyyMMdd-HH}.log</FileNamePattern>
 			<!--只保留最近90天的日志 -->
 			<maxHistory>90</maxHistory>
 			<!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志 -->
@@ -99,7 +99,7 @@
 	 <appender name="errfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${logback.logs.path}/error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${logback.logs.path}/error.%d{yyyyMMdd}.gz</FileNamePattern>
+            <FileNamePattern>${logback.logs.path}/error.%d{yyyyMMdd}.log</FileNamePattern>
         </rollingPolicy>
         <encoder charset="UTF-8">
 			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %level %logger:%line %msg%n</pattern>
@@ -110,22 +110,21 @@
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
-     <!-- <springProfile name="test,dev">
-		<logger name="bonc.com.cn.controller" level="INFO" additivity="false"/>
-	</springProfile>
-	生产环境.
- 	<springProfile name="pro">
- 		<logger name="bonc.com.cn.controllerer" level="INFO" additivity="false">
-  			<appender-ref ref="console"/>
- 		</logger>
- 	</springProfile> -->
 	<!--指定最基础的日志输出级别-->
-	 <root level="INFO">
-        <appender-ref ref="console"/>
-        <appender-ref ref="errconsole"/>
-        <appender-ref ref="debugfile"/>
-        <appender-ref ref="infofile"/>
-        <appender-ref ref="warnfile"/>
-        <appender-ref ref="errfile"/>
-    </root>
+	 <springProfile name="dev,test">
+        <root level="INFO">
+            <appender-ref ref="console"/>
+           <appender-ref ref="errconsole"/>
+        </root>
+    </springProfile>
+    <springProfile name="pro">
+        <root level="INFO">
+             <appender-ref ref="console"/>
+        	 <appender-ref ref="errconsole"/>
+       	 	 <appender-ref ref="debugfile"/>
+        	 <appender-ref ref="infofile"/>
+        	 <appender-ref ref="warnfile"/>
+        	 <appender-ref ref="errfile"/>
+        </root>
+    </springProfile>
 </configuration>
