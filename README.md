@@ -24,16 +24,17 @@ Lombok
 application.yaml或application.properties里配置spring.profiles.active
 
 # 应用内获取环境变量: 
-#spring注入: @Autowired Environment env 或手动解析spring配置文件（不依赖Spring）
+spring注入: @Autowired Environment env 或手动解析spring配置文件（不依赖Spring）
 
 # 数据源配置
 手动安装: redis: ip:127.0.0.1 port:6379 password:无
 
 # 可执行jar包
 java -jar deploy/build/libs/deploy-${version}.jar
-./deploy/build/libs/deploy-${version}.jar 如需配置JVM等参数请修复deploy/config/deploy-${version}.conf并拷贝到可执行jar包相同目录，并修改${version}
-运行项目方式
-执行运行: Application.java
+
+./deploy/build/libs/deploy-${version}.jar 
+
+如需配置JVM等参数请修复deploy/config/deploy-${version}.conf并拷贝到可执行jar包相同目录，并修改${version}运行项目方式执行运行: Application.java
 
 # 监控
 健康检查： http://localhost:7002/health
