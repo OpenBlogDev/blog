@@ -19,7 +19,10 @@ public class DataSourceConfigDev {
 		druidDataSource.setUrl("jdbc:mysql://172.16.3.47:31885/pdm?characterEncoding=utf-8&autoReconnect=true&useSSL=false");
 		druidDataSource.setUsername("root");
 		druidDataSource.setPassword("LxQrCv8L");
-		//druidDataSource.setInitialSize();
+		druidDataSource.setInitialSize(5);
+		druidDataSource.setMaxActive(8);
+		
+		druidDataSource.setValidationQuery("SELECT 1");
 		return druidDataSource; 
 		
 	}
