@@ -10,16 +10,17 @@ import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration
 @Profile("dev")
-public class DataSourceConfig {
+public class DataSourceConfigDev {
 	
 	@Bean
 	public DataSource myDataSource() {
 		DruidDataSource druidDataSource = new  DruidDataSource();
 		druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		druidDataSource.setUrl("jdbc:mysql://localhost:3306/blog?characterEncoding=utf-8&autoReconnect=true&useSSL=false");
+		druidDataSource.setUrl("jdbc:mysql://172.16.3.47:31885/pdm?characterEncoding=utf-8&autoReconnect=true&useSSL=false");
 		druidDataSource.setUsername("root");
-		druidDataSource.setPassword("root");
-		return null; 
+		druidDataSource.setPassword("LxQrCv8L");
+		//druidDataSource.setInitialSize();
+		return druidDataSource; 
 		
 	}
 }
