@@ -19,12 +19,12 @@ import lombok.ToString;
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idInteger;
+    private Integer id;
 
-    @Column(name = "blog_name", nullable = true, columnDefinition = " varchar(50) COMMENT '标题' ")
+    @Column(name = "blog_name", nullable = false, columnDefinition = " varchar(50) COMMENT '标题' ")
     private String name;
 
-    @Column(name = "blog_author", nullable = true, columnDefinition = "char(20) COMMENT '标题' ")
+    @Column(name = "blog_author", nullable = false, columnDefinition = "char(20) COMMENT '作者' ")
     private String author;
 
 }
