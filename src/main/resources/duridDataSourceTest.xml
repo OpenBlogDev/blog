@@ -5,16 +5,16 @@
 	
 	<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
 		<!--慢sql记录 -->
-        <property name="slowSqlMillis" value="10000" />
+        <property name="slowSqlMillis" value="2000" />
         <property name="logSlowSql" value="true" />
         <!--sql合并  -->
         <property name="mergeSql" value="true" />
     </bean>
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://172.16.3.47:31885/pdm?characterEncoding=utf-8"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/bonc_blog?characterEncoding=utf-8&amp;autoReconnect=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
 		<property name="username" value="root" />
-		<property name="password" value="LxQrCv8L" />
+		<property name="password" value="root" />
 		<!-- 配置初始化大小、最小、最大 -->
 		<property name="initialSize" value="1" />
 		<property name="minIdle" value="1" />

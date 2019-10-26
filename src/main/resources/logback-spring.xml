@@ -3,7 +3,7 @@
 	<!-- 设置上下文名称 -->
 	<contextName>blog-logging</contextName>
 	<!--路径 -->
-	<property name="logback.logs.path" value="./src/main/webapp/logs" />
+	<property name="logback.logs.path" value="./" />
 	<!--appender 模块 -->
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender" target="System.out">
 		<layout charset="UTF-8">
@@ -120,7 +120,7 @@
 	 <springProfile name="dev,test">
         <root level="INFO">
             <appender-ref ref="console"/>
-           <appender-ref ref="errconsole"/>
+            <appender-ref ref="errconsole"/>
         </root>
     </springProfile>
     <springProfile name="pro">
