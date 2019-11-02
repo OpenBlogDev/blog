@@ -110,7 +110,7 @@
             <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
-    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.springframework" level="ERROR"/>
     <logger name="druid" level="ERROR"/>
     <!--<logger name="org.hibernate" level="ERROR"/>
     <logger name="springfox" level="WARN"/>
