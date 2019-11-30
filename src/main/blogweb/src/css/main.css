@@ -1,0 +1,13 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+.home{
+	background-color: antiquewhite;
+	font-size: 24px;
+	color: #f50;
+	display:flex;
+	background: url('../img/future.jpg') no-repeat top;
+    background-size: 100%;
+}

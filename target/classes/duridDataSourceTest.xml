@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+		<!--慢sql记录 -->
+        <property name="slowSqlMillis" value="2000" />
+        <property name="logSlowSql" value="true" />
+        <!--sql合并  -->
+        <property name="mergeSql" value="true" />
+    </bean>
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/bonc_blog?characterEncoding=utf-8&amp;autoReconnect=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" />
+		<property name="maxActive" value="5" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="6000" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="180000" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+     	<property name="minEvictableIdleTimeMillis" value="600000" />
+     	<property name="maxEvictableIdleTimeMillis" value="900000" />
+		<property name="validationQuery" value="select 1 " />
+     	<!--不影响性能，并且保证安全性。如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。  -->
+		<property name="testWhileIdle" value="true" />
+		<!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
+		<property name="testOnBorrow" value="true" />
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="10" />
+		<!-- 这里配置提交方式，默认就是TRUE，可以不用配置 -->
+		<property name="defaultAutoCommit" value="true" />
+		<!-- 验证连接有效与否的SQL，不同的数据配置不同 -->
+    	<!-- <property name="filters" value="log4j" /> -->
+   	 	<property name="proxyFilters">
+        	<list>
+	    		<ref bean="stat-filter" />
+        	</list>
+    	</property>
+	</bean>
+</beans>
