@@ -7,7 +7,7 @@ const VueLoaderPlugin=require("vue-loader/lib/plugin");// 通过 npm 安装
 
 var config = {
 	entry: { 
-		main: './src/js/main.js' 
+		index: './src/js/index/index.js' 
 	},
 	output: { 
 		path: path.resolve(__dirname, '../resources/static/Vblog/dist'),
@@ -59,7 +59,7 @@ var config = {
 		             loader: 'url-loader',
 		             options: {
 		               name: '[name].[ext]',
-		               limit: 1024, //当大小大于1024时候使用 file-loader(默认),小于则使用base64
+		               limit: 2048, //当大小大于1024时候使用 file-loader(默认),小于则使用base64
 					   outputPath : 'img',
 		             }
 		           },
@@ -71,9 +71,9 @@ var config = {
 	},
 	plugins: [
 	    new HtmlWebpackPlugin({ 
-			template:path.join(__dirname, './src/html/main.html'),
-	        filename:'./html/mian.html',
-	        chunks:['main'],
+			template:path.join(__dirname, './src/html/index/index.html'),
+	        filename:'./html/index.html',
+	        chunks:['index'],
 	        inject:true,
 	    }),
 		new MiniCssExtractPlugin({
