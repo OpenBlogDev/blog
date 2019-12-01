@@ -9,7 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 // @Configuration
-public class RedisConfig {
+public class RedisConfigTest {
 
     @SuppressWarnings("deprecation")
     @Bean
