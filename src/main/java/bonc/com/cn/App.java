@@ -6,7 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
-
+/**
+ * 
+ * @author whw
+ *
+ */
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {ThymeleafAutoConfiguration.class, FreeMarkerAutoConfiguration.class})
 @EnableCaching

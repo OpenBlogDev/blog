@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 @ControllerAdvice
 public class GlobalException {
 
-    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    @ExceptionHandler(Exception.class)
     public String maxUploadSizeExceededExceptionHandler(MaxUploadSizeExceededException maxUploadSizeExceededException) {
 
         return "error/duplicate";
